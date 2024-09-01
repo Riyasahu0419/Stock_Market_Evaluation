@@ -1,8 +1,8 @@
 const mongoose=require("mongoose")
 const stockSchema=mongoose.Schema({
-    "Stock_name":String,
+    "name":String,
     "symbol":String,
-    "listing_price":Number
+    "initial_price":Number
 
 },{
     versionKey:false

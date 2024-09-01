@@ -1,10 +1,10 @@
 const express=require("express")
-const route=express.Router()
 const userModel=require("../model/usermodel")
+const router=express.Router()
 
 
 
-route.post("/register",async(req,res)=>{
+router.post("/register",async(req,res)=>{
     const {email,password} =req.body
     const data = await userModel.findOne({email})
     if(data){
@@ -26,7 +26,7 @@ route.post("/register",async(req,res)=>{
 })
 
 
-route.post("/login",async(req,res)=>{
+router.post("/login",async(req,res)=>{
     const {email, password}= req.body
     const isPresent= await userModel.findOne({email})
     if(!isPresent){
@@ -49,3 +49,5 @@ route.post("/login",async(req,res)=>{
         res.json({msg:"user not found",error})
     }
 })
+
+module.exports=router

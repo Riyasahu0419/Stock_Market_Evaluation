@@ -1,9 +1,19 @@
 const express= require("express")
 const connection=require("./config/db")
 const server=express()
-server.use(express.json())
+const userRoute=require("./router/userRoute")
+const stockRoute=require("./router/stockRoute")
+const orderRoute=require("./router/orderRoute")
 
-PORT=5000
+require('dotenv').config()
+
+server.use(express.json())
+PORT=process.env.PORT || 5000
+
+
+server.use('/user', userRoute);
+server.use('/stock', stockRoute);
+server.use('/order', orderRoute);
 
 
 
